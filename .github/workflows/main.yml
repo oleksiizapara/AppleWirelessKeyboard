@@ -41,6 +41,8 @@ name: .NET Core Desktop
 on:
   push:
     branches: [ "master" ]
+    tags:
+      - "v*.*.*"
 
 jobs:
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
 
@@ -52,6 +53,8 @@ namespace AppleWirelessKeyboardCore.Keyboard.Apple
 
             // Process Event
             if (ar.AsyncState is not byte[] asyncState) return;
+
+            if (asyncState.All(x => x == 0)) return;
 
             if (asyncState[0] == 0x11 || asyncState[0] == 0x00)
             {

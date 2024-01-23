@@ -64,7 +64,7 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
@@ -77,7 +77,7 @@ jobs:
     # Publish the application to populate the obj folder with RuntimeIdentifiers
     - name: Publish the application
       run: msbuild $env:Solution_Name /t:Publish /p:Configuration=Release  /p:OutputPath=output
-      
+
     - name: Create zip archive
       run: Compress-Archive -Path ./AppleWirelessKeyboardCore/output/* -DestinationPath Release.zip
       
